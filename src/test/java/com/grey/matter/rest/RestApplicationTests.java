@@ -6,10 +6,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -26,7 +25,8 @@ class RestApplicationTests {
         .perform(get("/models"))
         .andDo(print())
         .andExpect(status().isOk())
-        .andExpect(content().string(equalTo("watch")));
+        .andExpect(jsonPath("$").isArray())
+        .andExpect(jsonPath("$[0].name").value("watch"));
   }
 
 }
