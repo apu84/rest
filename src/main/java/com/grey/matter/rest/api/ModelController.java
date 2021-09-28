@@ -1,6 +1,8 @@
 package com.grey.matter.rest.api;
 
 import com.grey.matter.rest.model.ModelDescriptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +17,8 @@ import java.util.Optional;
 
 @RestController()
 public class ModelController {
+  private static final Logger mLogger = LoggerFactory.getLogger(ModelController.class);
+
   private final List<ModelDescriptor> models = new ArrayList<>();
 
   public ModelController() {
@@ -24,6 +28,7 @@ public class ModelController {
 
   @GetMapping("/models")
   List<ModelDescriptor> getModels() {
+    mLogger.info("Request for {}", "getModels()");
     return models;
   }
 
