@@ -4,6 +4,10 @@ To run using maven
 
 ### $ ./mvnw spring-boot:run
 
+if mvn build fails, run
+
+$ mvn -N io.takari:maven:wrapper
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
